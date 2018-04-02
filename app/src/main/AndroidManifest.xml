@@ -26,8 +26,11 @@
         <activity
             android:name=".settingActivity"
             android:theme="@style/AppTheme.NoBar" />
-        <activity android:name=".countActivity"
-            android:label="@string/count_name" ></activity>
+        <activity
+            android:name=".countActivity"
+            android:label="@string/count_name" />
+        <activity android:name=".hisActivity"
+            android:label="@string/his_name" />
     </application>
 
 </manifest>
