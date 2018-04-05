@@ -1,7 +1,7 @@
-package com.example.xpq.a1;
+package mg.studio.pedometer;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
 public class HisActivity extends AppCompatActivity {
 
