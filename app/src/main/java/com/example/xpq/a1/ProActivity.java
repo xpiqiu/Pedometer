@@ -1,4 +1,5 @@
 package com.example.xpq.a1;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -8,24 +9,25 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.widget.EditText;
 import android.widget.TextView;
+
 import java.math.BigDecimal;
-public class proActivity extends AppCompatActivity {
-  private EditText Weight;
+
+public class ProActivity extends AppCompatActivity {
+    private EditText Weight;
     private EditText Height;
     private EditText st;
     private TextView bmi;
     private TextView jud;
 
 
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pro);
-        Weight = (EditText) findViewById(R.id.weight);
-        Height = (EditText) findViewById(R.id.height);
-        st= (EditText) findViewById(R.id.step);
-        bmi = (TextView) findViewById(R.id.BMI);
-        jud=(TextView)findViewById(R.id.judge);
+        Weight = findViewById(R.id.weight);
+        Height = findViewById(R.id.height);
+        st = findViewById(R.id.step);
+        bmi = findViewById(R.id.BMI);
+        jud = findViewById(R.id.judge);
         show();
         Weight.addTextChangedListener(watcher);
         Height.addTextChangedListener(watcher);
@@ -33,6 +35,7 @@ public class proActivity extends AppCompatActivity {
         //得到键为key的值，如果没有temp值为default，如果存在temp为key的值
 
     }
+
     private TextWatcher watcher = new TextWatcher() {
 
 
@@ -40,7 +43,7 @@ public class proActivity extends AppCompatActivity {
 
         }
 
-      public void beforeTextChanged(CharSequence s, int start, int count,
+        public void beforeTextChanged(CharSequence s, int start, int count,
                                       int after) {
 
         }
@@ -48,7 +51,7 @@ public class proActivity extends AppCompatActivity {
 
         public void afterTextChanged(Editable s) {
             save();
-            if(!TextUtils.isEmpty(Weight.getText())&&!TextUtils.isEmpty(Height.getText())) {
+            if (!TextUtils.isEmpty(Weight.getText()) && !TextUtils.isEmpty(Height.getText())) {
                 SharedPreferences sharedPreferences = getSharedPreferences("huangbiao", MODE_PRIVATE);
                 double temp = Double.parseDouble(sharedPreferences.getString("wei", "20")) / Double.parseDouble(sharedPreferences.getString("hei", "20")) /
                         Double.parseDouble(sharedPreferences.getString("hei", "20"));
@@ -67,10 +70,12 @@ public class proActivity extends AppCompatActivity {
             }
         }
     };
+
     public void onBackPressed() {
         super.onBackPressed();
         save();
     }
+
     public void save() {
         SharedPreferences sharedPreferences = getSharedPreferences("huangbiao", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
@@ -79,12 +84,13 @@ public class proActivity extends AppCompatActivity {
         editor.putString("step", st.getText().toString());
         editor.commit();
     }
+
     public void show() {
         SharedPreferences sharedPreferences = getSharedPreferences("huangbiao", MODE_PRIVATE);
         Weight.setText(sharedPreferences.getString("wei", "20"));
         Height.setText(sharedPreferences.getString("hei", "20"));
         st.setText(sharedPreferences.getString("step", "20"));
-        if (!TextUtils.isEmpty(Weight.getText())&&!TextUtils.isEmpty(Height.getText())) {
+        if (!TextUtils.isEmpty(Weight.getText()) && !TextUtils.isEmpty(Height.getText())) {
             double temp = Double.parseDouble(sharedPreferences.getString("wei", "20")) / Double.parseDouble(sharedPreferences.getString("hei", "20")) /
                     Double.parseDouble(sharedPreferences.getString("hei", "20"));
             BigDecimal bd = new BigDecimal(temp);

@@ -7,15 +7,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
-import android.app.AlertDialog.Builder;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.DialogInterface.OnMultiChoiceClickListener;
+
 import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class doingActivity extends AppCompatActivity {
+public class DoingActivity extends AppCompatActivity {
 
 
     private TextView tx;
@@ -42,7 +39,7 @@ public class doingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent record=new Intent(doingActivity.this,hisActivity.class);
+                Intent record=new Intent(DoingActivity.this,HisActivity.class);
                 startActivity(record);
             }
         });
@@ -50,7 +47,7 @@ public class doingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent ret=new Intent(doingActivity.this,MainActivity.class);
+                Intent ret=new Intent(DoingActivity.this,MainActivity.class);
                 startActivity(ret);
             }
         });

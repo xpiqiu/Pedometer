@@ -18,18 +18,18 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".doingActivity"
+            android:name=".DoingActivity"
             android:label="@string/doing_name" />
         <activity
-            android:name=".proActivity"
+            android:name=".ProActivity"
             android:label="@string/pro_name" />
         <activity
-            android:name=".settingActivity"
+            android:name=".SettingActivity"
             android:theme="@style/AppTheme.NoBar" />
         <activity
-            android:name=".countActivity"
+            android:name=".CountActivity"
             android:label="@string/count_name" />
-        <activity android:name=".hisActivity"
+        <activity android:name=".HisActivity"
             android:label="@string/his_name" />
     </application>
 

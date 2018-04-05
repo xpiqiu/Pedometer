@@ -5,8 +5,6 @@ import android.os.Bundle;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -16,20 +14,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-    public void startclick(View view){
-      Intent start=new Intent(MainActivity.this,doingActivity.class);
-      startActivity(start);
+
+    public void startClick(View view) {
+
+        startActivity(new Intent(MainActivity.this, DoingActivity.class));
     }
-    public void proclick(View view){
-        Intent profile=new Intent(MainActivity.this,proActivity.class);
-        startActivity(profile);
+
+    public void proClick(View view) {
+
+        startActivity(new Intent(MainActivity.this, ProActivity.class));
     }
-    public void settingclick(View view){
-        Intent setting=new Intent(MainActivity.this,settingActivity.class);
-        startActivity(setting);
+
+    public void settingClick(View view) {
+
+        startActivity(new Intent(MainActivity.this, SettingActivity.class));
     }
-    public void countclick(View view){
-        Intent count=new Intent(MainActivity.this,countActivity.class);
-        startActivity(count);
+
+    public void countClick(View view) {
+        startActivity(new Intent(MainActivity.this, CountActivity.class));
     }
 }

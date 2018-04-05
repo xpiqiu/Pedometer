@@ -20,13 +20,13 @@
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             app:srcCompat="@drawable/icon_start"
-            android:onClick="startclick"/>
+            android:onClick="startClick"/>
 
         <ImageView
             android:id="@+id/cou"
             android:layout_width="50sp"
             android:layout_height="50sp"
-            android:onClick="countclick"
+            android:onClick="countClick"
             android:layout_alignParentBottom="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
@@ -44,7 +44,7 @@
             android:layout_alignTop="@+id/cou"
             android:layout_marginEnd="31dp"
             android:layout_marginRight="31dp"
-            android:onClick="settingclick"
+            android:onClick="settingClick"
             app:srcCompat="@drawable/icon_set" />
 
         <ImageView
@@ -59,7 +59,7 @@
 
         <ImageView
             android:id="@+id/pro"
-            android:onClick="proclick"
+            android:onClick="proClick"
             android:layout_width="50sp"
             android:layout_height="50sp"
             android:layout_alignLeft="@+id/cou"
