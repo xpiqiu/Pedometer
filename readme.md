@@ -1,0 +1,1 @@
+![Pedometer](demo_pedo.gif)

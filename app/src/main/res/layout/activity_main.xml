@@ -1,132 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.xpq.a1.MainActivity">
+    android:clickable="true"
+    android:onClick="clickLayout"
+    tools:context=".MainActivity">
 
-    <RelativeLayout
+    <com.realsoc.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="0dp"
-        android:background="@color/colorAccent">
+        app:rb_color="@color/colorAccent"
+        app:rb_duration="6000"
+        app:rb_radius="32dp"
+        app:rb_rippleAmount="4"
+        app:rb_scale="6">
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/btn_style_border_round"
+            android:elevation="56dp"
+            android:fontFamily="monospace"
+            android:text="start"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp" />
+    </com.realsoc.library.RippleBackground>
+
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="16dp"
+        android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/start"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            app:srcCompat="@drawable/icon_start"
-            android:onClick="startclick"/>
+            android:id="@+id/statistics"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:onClick="btnStatistics"
+            android:src="@drawable/statistics" />
 
         <ImageView
-            android:id="@+id/cou"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:onClick="countclick"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="56dp"
-            android:layout_marginLeft="38dp"
-            android:layout_marginStart="38dp"
-            app:srcCompat="@drawable/icon_cou" />
+            android:id="@+id/history"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="btnHistory"
+            android:src="@drawable/history" />
 
         <ImageView
-            android:id="@+id/set"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/cou"
-            android:layout_marginEnd="31dp"
-            android:layout_marginRight="31dp"
-            android:onClick="settingclick"
-            app:srcCompat="@drawable/icon_set" />
+            android:id="@+id/settings"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="btnSettings"
+            android:src="@drawable/settings" />
 
         <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_alignLeft="@+id/set"
-            android:layout_alignParentTop="true"
-            android:layout_alignStart="@+id/set"
-            android:layout_marginTop="44dp"
-            app:srcCompat="@drawable/icon_his" />
+            android:id="@+id/profile"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="btnProfile"
+            android:src="@drawable/profile" />
 
-        <ImageView
-            android:id="@+id/pro"
-            android:onClick="proclick"
-            android:layout_width="50sp"
-            android:layout_height="50sp"
-            android:layout_alignLeft="@+id/cou"
-            android:layout_alignStart="@+id/cou"
-            android:layout_alignTop="@+id/imageView2"
-            app:srcCompat="@drawable/icon_pro" />
 
-        <TextView
-        android:layout_width="80sp"
-        android:layout_height="20sp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/pro"
-        android:layout_marginLeft="26dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="12dp"
-        android:text="My profile"
-        android:textColor="@color/green"
-            android:id="@+id/tpro" />
+    </LinearLayout>
 
-        <TextView
-            android:layout_width="80sp"
-            android:layout_height="20sp"
-            android:layout_alignBaseline="@+id/tpro"
-            android:layout_alignBottom="@+id/tpro"
-            android:layout_alignLeft="@+id/imageView2"
-            android:layout_alignStart="@+id/imageView2"
-            android:layout_marginLeft="1dp"
-            android:layout_marginStart="2dp"
-            android:text="History"
-            android:textColor="@color/green"
-            android:id="@+id/hist" />
 
-        <TextView
-            android:id="@+id/tcou"
-            android:layout_width="80sp"
-            android:layout_height="20sp"
-            android:layout_alignBaseline="@+id/textView"
-            android:layout_alignBottom="@+id/textView"
-            android:layout_alignLeft="@+id/cou"
-            android:layout_alignStart="@+id/cou"
-            android:text="Statistics"
-            android:textColor="@color/green" />
-
-        <TextView
-            android:layout_width="80sp"
-            android:layout_height="20sp"
-            android:layout_alignLeft="@+id/start"
-            android:layout_alignStart="@+id/start"
-            android:layout_alignTop="@+id/start"
-            android:layout_marginLeft="11dp"
-            android:layout_marginStart="11dp"
-            android:layout_marginTop="55dp"
-            android:text="Start"
-            android:textColor="@color/green" />
-
-        <TextView
-            android:layout_width="80sp"
-            android:layout_height="20sp"
-            android:layout_alignLeft="@+id/hist"
-            android:layout_alignStart="@+id/hist"
-            android:layout_below="@+id/set"
-            android:layout_marginTop="15dp"
-            android:text="Setting"
-            android:textColor="@color/green"
-            android:id="@+id/textView" />
-
-    </RelativeLayout>
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>

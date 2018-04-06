@@ -1,101 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.xpq.a1.doingActivity">
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".DoingActivity">
+
 
     <LinearLayout
+        android:id="@+id/header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/colorAccent"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="79dp">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:orientation="horizontal"
-            tools:layout_editor_absoluteX="139dp"
-            tools:layout_editor_absoluteY="0dp">
-
-            <ImageView
-                android:layout_width="109dp"
-                android:layout_height="96dp"
-                app:srcCompat="@drawable/gps_on" />
-
-            <TextView
-                android:layout_width="140dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="40dp"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:layout_width="59dp"
-                android:layout_height="42dp"
-                android:layout_marginTop="40dp"
-                android:text="Walking"
-                android:textColor="@color/white" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                app:srcCompat="@drawable/walk" />
-        </LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:orientation="horizontal">
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/model1" />
 
-
-<FrameLayout
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="-20dp"
-            app:srcCompat="@drawable/model2" />
-    <TextView
-        android:layout_gravity="right"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="28dp"
-        android:id="@+id/time"
-        android:textSize="30sp"
-        android:layout_width="160dp"
-        android:layout_height="42dp"
-        android:textColor="@color/black" />
-</FrameLayout>
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@drawable/modulo2" />
-
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/stop_button" />
-
+            android:layout_height="96dp"
+            app:srcCompat="@drawable/gps_on" />
 
         <TextView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="-75dp"
-            android:text="Stop"
-            android:id="@+id/stop"
-            android:onClick="stopclick"
-            android:textColor="@color/white"
-            android:textSize="38sp" />
+            android:layout_margin="8dp"
+            android:layout_weight="1"
+            android:textColor="@android:color/white" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:gravity="right"
+            android:text="Walking"
+            android:textColor="@android:color/white" />
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="96dp"
+            android:layout_gravity="right"
+            app:srcCompat="@drawable/walk" />
     </LinearLayout>
-</android.support.constraint.ConstraintLayout>
+
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="20dp"
+        android:autoSizeTextType="uniform"
+        android:background="@drawable/btn_style_full"
+        android:onClick="bntStop"
+        android:text="Stop"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="119dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
+
+
+</RelativeLayout>
+
