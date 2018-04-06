@@ -40,7 +40,7 @@ public class DoingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent record = new Intent(DoingActivity.this, HisActivity.class);
+                Intent record = new Intent(DoingActivity.this, Statistics.class);
                 startActivity(record);
             }
         });

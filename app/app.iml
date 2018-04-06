@@ -113,6 +113,7 @@
     <orderEntry type="library" name="Gradle: com.android.support:design-27.1.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.core:runtime-1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:animated-vector-drawable-27.1.0" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.realsoc:android-ripple-background-0.4" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:appcompat-v7-27.1.0" level="project" />
     <orderEntry type="library" name="Gradle: android.arch.lifecycle:viewmodel-1.1.0" level="project" />
     <orderEntry type="library" name="Gradle: com.android.support:support-compat-27.1.0" level="project" />

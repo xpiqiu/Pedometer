@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.realsoc:android-ripple-background-0.4">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-ripple-background-0.4.aar/3cb01038df22e8a2fdbc06324f309b8b/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/android-ripple-background-0.4.aar/3cb01038df22e8a2fdbc06324f309b8b/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.realsoc/android-ripple-background/0.4/a5198b6b853f2659f43a84d1938ed02ed4330f1c/android-ripple-background-0.4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

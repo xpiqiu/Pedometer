@@ -19,6 +19,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        //For the ripple animation
+        maven { url 'https://jitpack.io' }
     }
 }
 

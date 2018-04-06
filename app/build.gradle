@@ -23,4 +23,6 @@ dependencies {
     implementation 'com.android.support:appcompat-v7:27.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     implementation 'com.android.support:design:27.1.0'
+    //Ripple_animation
+    implementation 'com.github.realsoc:android-ripple-background:0.4'
 }

@@ -11,25 +11,25 @@ import android.widget.TextView;
 
 import java.math.BigDecimal;
 
-public class ProActivity extends AppCompatActivity {
-    private EditText Weight;
-    private EditText Height;
-    private EditText st;
+public class Profile extends AppCompatActivity {
+    private EditText weight;
+    private EditText height;
+    private EditText stride;
     private TextView bmi;
     private TextView jud;
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_pro);
-        Weight = findViewById(R.id.weight);
-        Height = findViewById(R.id.height);
-        st = findViewById(R.id.step);
-        bmi = findViewById(R.id.BMI);
+        setContentView(R.layout.profile);
+        weight = findViewById(R.id.weight);
+        height = findViewById(R.id.height);
+        stride = findViewById(R.id.stride);
+        bmi = findViewById(R.id.bmi);
         jud = findViewById(R.id.judge);
         show();
-        Weight.addTextChangedListener(watcher);
-        Height.addTextChangedListener(watcher);
+        weight.addTextChangedListener(watcher);
+        weight.addTextChangedListener(watcher);
 
         //得到键为key的值，如果没有temp值为default，如果存在temp为key的值
 
@@ -50,7 +50,7 @@ public class ProActivity extends AppCompatActivity {
 
         public void afterTextChanged(Editable s) {
             save();
-            if (!TextUtils.isEmpty(Weight.getText()) && !TextUtils.isEmpty(Height.getText())) {
+            if (!TextUtils.isEmpty(weight.getText()) && !TextUtils.isEmpty(height.getText())) {
                 SharedPreferences sharedPreferences = getSharedPreferences("huangbiao", MODE_PRIVATE);
                 double temp = Double.parseDouble(sharedPreferences.getString("wei", "20")) / Double.parseDouble(sharedPreferences.getString("hei", "20")) /
                         Double.parseDouble(sharedPreferences.getString("hei", "20"));
@@ -78,18 +78,18 @@ public class ProActivity extends AppCompatActivity {
     public void save() {
         SharedPreferences sharedPreferences = getSharedPreferences("huangbiao", MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("wei", Weight.getText().toString());
-        editor.putString("hei", Height.getText().toString());
-        editor.putString("step", st.getText().toString());
+        editor.putString("wei", weight.getText().toString());
+        editor.putString("hei", height.getText().toString());
+        editor.putString("step", stride.getText().toString());
         editor.commit();
     }
 
     public void show() {
         SharedPreferences sharedPreferences = getSharedPreferences("huangbiao", MODE_PRIVATE);
-        Weight.setText(sharedPreferences.getString("wei", "20"));
-        Height.setText(sharedPreferences.getString("hei", "20"));
-        st.setText(sharedPreferences.getString("step", "20"));
-        if (!TextUtils.isEmpty(Weight.getText()) && !TextUtils.isEmpty(Height.getText())) {
+        weight.setText(sharedPreferences.getString("wei", "20"));
+        height.setText(sharedPreferences.getString("hei", "20"));
+        stride.setText(sharedPreferences.getString("step", "20"));
+        if (!TextUtils.isEmpty(weight.getText()) && !TextUtils.isEmpty(height.getText())) {
             double temp = Double.parseDouble(sharedPreferences.getString("wei", "20")) / Double.parseDouble(sharedPreferences.getString("hei", "20")) /
                     Double.parseDouble(sharedPreferences.getString("hei", "20"));
             BigDecimal bd = new BigDecimal(temp);

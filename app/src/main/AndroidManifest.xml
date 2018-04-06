@@ -19,11 +19,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".CountActivity" />
-        <activity android:name=".HisActivity" />
-        <activity android:name=".DoingActivity" />
-        <activity android:name=".ProActivity" />
-        <activity android:name=".SettingActivity" />
+        <activity
+            android:name=".CountActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:label="Statistic"
+            android:name=".Statistics"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".DoingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Profile"
+            android:label="@string/name_profile"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Setting"
+            android:label="@string/name_settings"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

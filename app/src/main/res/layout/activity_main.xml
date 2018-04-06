@@ -1,23 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clickable="true"
+    android:onClick="clickLayout"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:autoSizeTextType="uniform"
-        android:background="@drawable/btn_style_border"
-        android:paddingLeft="25dp"
-        android:paddingRight="25dp"
-        android:text="start"
-        android:textAllCaps="true"
-        android:onClick="btnStart"
-        android:textColor="@color/colorAccent" />
+    <com.realsoc.library.RippleBackground xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:rb_color="@color/colorAccent"
+        app:rb_duration="6000"
+        app:rb_radius="32dp"
+        app:rb_rippleAmount="4"
+        app:rb_scale="6">
+
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/btn_style_border_round"
+            android:elevation="56dp"
+            android:fontFamily="monospace"
+            android:text="start"
+            android:textAllCaps="true"
+            android:textColor="@color/colorPrimary"
+            android:textSize="30sp" />
+    </com.realsoc.library.RippleBackground>
+
 
     <LinearLayout
 
@@ -48,10 +62,19 @@
             android:id="@+id/settings"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:clickable="true"
             android:layout_weight="1"
+            android:clickable="true"
             android:onClick="btnSettings"
             android:src="@drawable/settings" />
+
+        <ImageView
+            android:id="@+id/profile"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:onClick="btnProfile"
+            android:src="@drawable/profile" />
 
 
     </LinearLayout>
