@@ -28,9 +28,8 @@ public class Profile extends AppCompatActivity {
         bmi = findViewById(R.id.bmi);
         jud = findViewById(R.id.judge);
         show();
+        height.addTextChangedListener(watcher);
         weight.addTextChangedListener(watcher);
-        weight.addTextChangedListener(watcher);
-
         //得到键为key的值，如果没有temp值为default，如果存在temp为key的值
 
     }
@@ -52,19 +51,21 @@ public class Profile extends AppCompatActivity {
             save();
             if (!TextUtils.isEmpty(weight.getText()) && !TextUtils.isEmpty(height.getText())) {
                 SharedPreferences sharedPreferences = getSharedPreferences("huangbiao", MODE_PRIVATE);
-                double temp = Double.parseDouble(sharedPreferences.getString("wei", "20")) / Double.parseDouble(sharedPreferences.getString("hei", "20")) /
-                        Double.parseDouble(sharedPreferences.getString("hei", "20"));
-                BigDecimal bd = new BigDecimal(temp);
-                bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-                bmi.setText("Your BMI is " + bd);
-                if (temp < 18.5) {
-                    jud.setText("Underweight");
-                }
-                if (temp >= 18.5 && temp < 24) {
-                    jud.setText("Normal");
-                }
-                if (temp >= 24) {
-                    jud.setText("Overweight");
+                if (Double.parseDouble(sharedPreferences.getString("hei", "20")) != 0) {
+                    double temp = Double.parseDouble(sharedPreferences.getString("wei", "20")) / Double.parseDouble(sharedPreferences.getString("hei", "20")) /
+                            Double.parseDouble(sharedPreferences.getString("hei", "20"));
+                    BigDecimal bd = new BigDecimal(temp);
+                    bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+                    bmi.setText("Your BMI is " + bd);
+                    if (temp < 18.5) {
+                        jud.setText("Underweight");
+                    }
+                    if (temp >= 18.5 && temp < 24) {
+                        jud.setText("Normal");
+                    }
+                    if (temp >= 24) {
+                        jud.setText("Overweight");
+                    }
                 }
             }
         }
@@ -90,20 +91,24 @@ public class Profile extends AppCompatActivity {
         height.setText(sharedPreferences.getString("hei", "20"));
         stride.setText(sharedPreferences.getString("step", "20"));
         if (!TextUtils.isEmpty(weight.getText()) && !TextUtils.isEmpty(height.getText())) {
-            double temp = Double.parseDouble(sharedPreferences.getString("wei", "20")) / Double.parseDouble(sharedPreferences.getString("hei", "20")) /
-                    Double.parseDouble(sharedPreferences.getString("hei", "20"));
-            BigDecimal bd = new BigDecimal(temp);
-            bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
-            bmi.setText("Your BMI is " + bd);
-            if (temp < 18.5) {
-                jud.setText("Underweight");
-            }
-            if (temp >= 18.5 && temp < 24) {
-                jud.setText("Normal");
-            }
-            if (temp >= 24) {
-                jud.setText("Overweight");
+            if (Double.parseDouble(sharedPreferences.getString("hei", "20")) != 0) {
+                double temp = Double.parseDouble(sharedPreferences.getString("wei", "20")) / Double.parseDouble(sharedPreferences.getString("hei", "20")) /
+                        Double.parseDouble(sharedPreferences.getString("hei", "20"));
+                BigDecimal bd = new BigDecimal(temp);
+                bd = bd.setScale(2, BigDecimal.ROUND_HALF_UP);
+                bmi.setText("Your BMI is " + bd);
+                if (temp < 18.5) {
+                    jud.setText("Underweight");
+                }
+                if (temp >= 18.5 && temp < 24) {
+                    jud.setText("Normal");
+                }
+                if (temp >= 24) {
+                    jud.setText("Overweight");
+                }
             }
         }
+        else
+            return;
     }
 }

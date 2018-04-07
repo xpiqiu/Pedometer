@@ -59,16 +59,15 @@
                 android:text="@string/weight_kg"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
-                android:textSize="26sp" />
+                android:textSize="28sp" />
 
             <EditText
                 android:id="@+id/weight"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="center"
-                android:inputType="numberDecimal"
-                android:maxLength="5"
+                android:digits="1234567890."
                 android:textColor="@android:color/white"
                 android:textSize="28sp" />
         </LinearLayout>
@@ -84,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/height_cm"
+                android:text="@string/height_m"
                 android:textAllCaps="false"
                 android:padding="10dp"
                 android:textColor="@android:color/white"
@@ -92,12 +91,11 @@
 
             <EditText
                 android:id="@+id/height"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:layout_gravity="end"
-                android:inputType="number"
-                android:maxLength="3"
+                android:gravity="center"
+                android:digits="1234567890."
                 android:textColor="@android:color/white"
                 android:textSize="28sp" />
         </LinearLayout>
@@ -121,12 +119,11 @@
 
             <EditText
                 android:id="@+id/stride"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:gravity="center"
-                android:inputType="number"
-                android:maxLength="3"
+                android:digits="1234567890."
                 android:textColor="@android:color/white"
                 android:textSize="28sp" />
         </LinearLayout>

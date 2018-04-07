@@ -6,5 +6,21 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@drawable/background"
 tools:context=".Statistics">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/po"
 
+        />
+    <com.baidu.mapapi.map.MapView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="true"
+        android:id="@+id/bmapView">
+    </com.baidu.mapapi.map.MapView>
+</LinearLayout>
 </android.support.constraint.ConstraintLayout>
