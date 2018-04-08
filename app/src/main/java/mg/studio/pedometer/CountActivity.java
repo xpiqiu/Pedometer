@@ -47,6 +47,10 @@ public class CountActivity extends AppCompatActivity {
         textView.setText(str);
         textView.setTextSize(25);
         lin.addView(textView);
+        TextView  line=new TextView(this);
+        line.setPadding(10,1,10,1);
+        lin.addView(line);
+
     }
     private String getdate(){
         Calendar calendar = Calendar.getInstance();//获取系统的日期
