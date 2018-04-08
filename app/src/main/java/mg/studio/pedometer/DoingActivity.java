@@ -1,35 +1,36 @@
 package mg.studio.pedometer;
 
-import android.Manifest;
-import android.content.Context;
+
+import android.content.ContentValues;
+
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.pm.PackageManager;
+
+import android.database.sqlite.SQLiteDatabase;
+
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.location.LocationManager;
+
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
+
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
 import com.baidu.location.LocationClient;
-import com.baidu.location.LocationClientOption;
 
-import java.util.ArrayList;
-import java.util.List;
+
+import java.math.BigDecimal;
+
 import java.util.Timer;
 import java.util.TimerTask;
+
+
 
 
 public class DoingActivity extends AppCompatActivity {
@@ -39,28 +40,38 @@ public class DoingActivity extends AppCompatActivity {
     private int hour = 0;
     private int minute = 0;
     private int second = 0;
+    private int flag = 0;
     private String h;
     private String m;
     private String s;
     private TextView p;
+    private TextView km;
+    private TextView sp;
     public LocationClient mLocationClient;
     int step=0;
     private SensorManager mSensorManager;
     private Sensor mStepSensor;
-
+    private int mStep;
+    private double distance;
+    private MainActivity.My dbHelper;
 
 
     private SensorEventListener mSensorEventListener = new SensorEventListener() {
-        private int mStep;
+
         public void onAccuracyChanged(Sensor sensor, int accuracy) {
 
         }
 
         public void onSensorChanged(SensorEvent event) {
-            if (event.values[0] <= 1.0f) {
+            if((event.values[0]>=12.0&&event.values[0]<=100)||(event.values[0]<=-12.0&&event.values[0]>=-100)) {
                 mStep++;
+                double temp = (int) (4 + Math.random() * (6 - 4 + 1)) / 10000.0;
+                distance += temp;
             }
             p.setText(mStep+"");
+            BigDecimal km2 = new BigDecimal(distance);
+            km2 = km2.setScale(3, BigDecimal.ROUND_HALF_UP);
+            km.setText(km2+"km");
         }
     };
 
@@ -80,11 +91,12 @@ public class DoingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doing);
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
-        mStepSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_STEP_COUNTER);
+        mStepSensor = mSensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
         tx = findViewById(R.id.time);
         p = (TextView) findViewById(R.id.po);
+        km = (TextView) findViewById(R.id.km);
+        sp = (TextView) findViewById(R.id.speed);
         timer.schedule(task, 0, 1000);
-
     }
 
 
@@ -98,8 +110,14 @@ public class DoingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-                Intent record = new Intent(DoingActivity.this, Statistics.class);
-                startActivity(record);
+                dbHelper=new MainActivity.My(DoingActivity.this,"use",null,1);
+                SQLiteDatabase db=dbHelper.getWritableDatabase();
+                ContentValues values=new ContentValues();
+                values.put("step",mStep);
+                values.put("km",distance);
+                db.insert("use",null,values);
+                Toast.makeText(DoingActivity.this,"Data has been stored",Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(DoingActivity.this, CountActivity.class));
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {  //取消按钮
@@ -142,6 +160,11 @@ public class DoingActivity extends AppCompatActivity {
                     else
                         h = Integer.toString(hour);
                     tx.setText(h + ":" + m + ":" + s);
+                    double t=hour+(minute*60+second)/3600.0;
+                    double spe=distance/t;
+                    BigDecimal speed = new BigDecimal(spe);
+                    speed = speed.setScale(2, BigDecimal.ROUND_HALF_UP);
+                    sp.setText(speed+"km/h");
                 }
             });
         }

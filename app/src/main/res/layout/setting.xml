@@ -30,21 +30,13 @@
             android:layout_marginRight="10dp"
             android:orientation="vertical">
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:background="@color/colorAccent"
-                android:gravity="center"
-                android:padding="8dp"
-                android:text="Personalize your app"
-                android:textColor="@color/colorPrimary"
-                android:textSize="18sp" />
+
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Sensitivity"
+                android:onClick="bntchange"
                 android:textColor="@android:color/white"
                 android:textSize="30sp" />
 
@@ -109,8 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:text="When your start a route,always ask if you want to
-  activate the GPS"
+                android:text="When your start a route,always ask if you want to activate the GPS"
                 android:textColor="@android:color/white"
                 android:textSize="15sp" />
 
