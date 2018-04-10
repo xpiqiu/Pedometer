@@ -25,16 +25,17 @@ public class CountActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_count);
         lin = findViewById(R.id.lin);
-        dbHelper=new MainActivity.My(CountActivity.this,"use",null,1);
+        dbHelper=new MainActivity.My(CountActivity.this,"xyz",null,1);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.query("use", null, null, null, null, null, null);
+        Cursor cursor = db.query("xyz", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
             do {
+                String date= cursor.getString(cursor.getColumnIndex("date"));
                 int step = cursor.getInt(cursor.getColumnIndex("step"));
                 double km = cursor.getDouble(cursor.getColumnIndex("km"));
                 BigDecimal bd = new BigDecimal(km);
                 bd = bd.setScale(3, BigDecimal.ROUND_HALF_UP);
-                creatText("Date:" + getdate() + "    " + step + "      " + bd+ "km");
+                creatText("Date:" +date+ "    " + step + "      " + bd+ "km");
             } while (cursor.moveToNext());
         }
         cursor.close();
@@ -45,18 +46,12 @@ public class CountActivity extends AppCompatActivity {
         final TextView textView = new TextView(this);
         textView.setPadding(10, 10, 10, 10);
         textView.setText(str);
-        textView.setTextSize(25);
+        textView.setTextSize(20);
         lin.addView(textView);
         TextView  line=new TextView(this);
         line.setPadding(10,1,10,1);
         lin.addView(line);
 
     }
-    private String getdate(){
-        Calendar calendar = Calendar.getInstance();//获取系统的日期
-        int year = calendar.get(Calendar.YEAR);//年
-        int month = calendar.get(Calendar.MONTH);//月
-        int day = calendar.get(Calendar.DAY_OF_MONTH);//日
-        return year+"-"+(month+1)+"-"+day;
-    }
+
 }

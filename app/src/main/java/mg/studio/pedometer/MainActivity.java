@@ -25,18 +25,18 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), DoingActivity.class));
             }
         });
-        dbHelper=new My(this,"use",null,1);
+        dbHelper=new My(this,"xyz",null,1);
         dbHelper.getWritableDatabase();
     }
      public static class My extends SQLiteOpenHelper{
-        public  static  final String use="create table use(id integer primary key autoincrement,step integer,km real)";
+        public  static  final String uses="create table xyz(id integer primary key autoincrement,date varchar,step integer,km real)";
         private Context mContext;
         public My(Context context, String name, SQLiteDatabase.CursorFactory factory,int verson){
             super(context,name,factory,verson);
             mContext=context;
         }
         public void onCreate(SQLiteDatabase db){
-            db.execSQL(use);
+            db.execSQL(uses);
         }
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
     }

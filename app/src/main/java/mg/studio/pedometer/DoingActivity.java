@@ -6,6 +6,7 @@ import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 
 import android.hardware.Sensor;
@@ -27,6 +28,7 @@ import com.baidu.location.LocationClient;
 
 import java.math.BigDecimal;
 
+import java.util.Calendar;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -41,6 +43,8 @@ public class DoingActivity extends AppCompatActivity {
     private int minute = 0;
     private int second = 0;
     private int flag = 0;
+
+    private double temp;
     private String h;
     private String m;
     private String s;
@@ -63,7 +67,7 @@ public class DoingActivity extends AppCompatActivity {
         }
 
         public void onSensorChanged(SensorEvent event) {
-            if((event.values[0]>=12.0&&event.values[0]<=100)||(event.values[0]<=-12.0&&event.values[0]>=-100)) {
+            if(judge(event.values[0],12.0)) {
                 mStep++;
                 double temp = (int) (4 + Math.random() * (6 - 4 + 1)) / 10000.0;
                 distance += temp;
@@ -96,6 +100,8 @@ public class DoingActivity extends AppCompatActivity {
         p = (TextView) findViewById(R.id.po);
         km = (TextView) findViewById(R.id.km);
         sp = (TextView) findViewById(R.id.speed);
+        SharedPreferences sharedPreferences = getSharedPreferences("choose", MODE_PRIVATE);
+        temp=Integer.parseInt(sharedPreferences.getString("progress","0"))+20;
         timer.schedule(task, 0, 1000);
     }
 
@@ -110,14 +116,16 @@ public class DoingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(DialogInterface arg0, int arg1) {
-                dbHelper=new MainActivity.My(DoingActivity.this,"use",null,1);
+                dbHelper=new MainActivity.My(DoingActivity.this,"xyz",null,1);
                 SQLiteDatabase db=dbHelper.getWritableDatabase();
                 ContentValues values=new ContentValues();
+                values.put("date",getdate());
                 values.put("step",mStep);
                 values.put("km",distance);
-                db.insert("use",null,values);
+                db.insert("xyz",null,values);
                 Toast.makeText(DoingActivity.this,"Data has been stored",Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(DoingActivity.this, CountActivity.class));
+                Intent ret = new Intent(DoingActivity.this, MainActivity.class);
+                startActivity(ret);
             }
         });
         builder.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {  //取消按钮
@@ -131,7 +139,13 @@ public class DoingActivity extends AppCompatActivity {
         AlertDialog b = builder.create();
         b.show();  //必须show一下才能看到对话框，跟Toast一样的道理
     }
-
+    private String getdate(){
+        Calendar calendar = Calendar.getInstance();//获取系统的日期
+        int year = calendar.get(Calendar.YEAR);//年
+        int month = calendar.get(Calendar.MONTH);//月
+        int day = calendar.get(Calendar.DAY_OF_MONTH);//日
+        return year+"-"+(month+1)+"-"+day;
+    }
     Timer timer = new Timer(true);
     TimerTask task = new TimerTask() {
 
@@ -169,4 +183,9 @@ public class DoingActivity extends AppCompatActivity {
             });
         }
     };
+
+
+    private boolean judge(double a,double b){
+        return (a>=b&&a<=temp)||(a<=-b&&a>=-temp);
+    }
 }
